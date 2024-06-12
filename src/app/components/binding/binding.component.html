@@ -1,0 +1,145 @@
+
+<hr/>
+
+<h3>Interpolation</h3>
+
+<p class="text-secondary">When ussing double curly brackets, we can display dynamic data like arithmetic expressions, variables, values returned by a function, etc.</p>
+
+<p style="text-align: center;">----</p>
+
+<p>Hello {{name}}</p>
+<p>Length of "{{name}}" is {{name.length}}</p>
+<p>{{ greetings() }}</p>
+
+
+<hr/>
+
+<h3>Property Binding</h3>
+<p class="text-secondary">Using square brackets on attributes, can change their values.</p>
+        
+<input type="text" 
+       class="form-control"
+       value="{{input1}}"
+       /> <br/>
+
+<!-- doing same thing as the above but w/o string interpolation  -->
+<input type="text" 
+       class="form-control"
+       [value]="input2"
+       /> <br/>
+
+<!-- 
+    - disabled is an attribute that is either true or false, can't use interpolation to set its value because it needs to take a boolean, not a string 
+    - put in the disabled attribute without setting it equal to anything
+    - then try disabled="false", you'll see that doesn't work, even when using interpolation, which will make it difficult to switch this from enabled to disabled through a property in the component class
+-->
+<input [disabled]="isInputDisabled" 
+       class="form-control" 
+       type="text" 
+       value="Add Some Text Here"
+       />
+
+
+
+<hr/>
+
+<h3>Class Binding</h3>
+<p class="text-secondary">Using Property Binding, we can switch between different classes to style an element</p>
+
+<p class="success">Style added normally for class success.</p>
+
+<p [class]="elementStyle">Style for success class added using property binding.</p>
+
+<p [class.danger]="hasError">Apply style for error using class binding and a boolean.</p>
+
+
+
+
+<hr/>
+<h3>Style Binding</h3>
+<p class="text-secondary">Similar to class binding, we can also bind styles to an element.</p>
+
+<p [style.color]="'blue'" >
+    This is styled using style binding.
+</p>
+
+<p [style.color]=" hasError ? 'red' : 'green' ">
+    This is styled using a ternary operator to check if there is an error (text is red) or there is no error (text is green).
+</p>
+
+<p [style.color]="fontColor">
+    This is styled using style binding with a variable.
+</p>
+
+
+
+<hr/>
+<h3>Event Binding</h3>
+<p class="text-secondary">We can bind events to elements to trigger functions in the component class.</p>
+
+
+<button class="btn btn-primary" (click)="sayHello()">
+    Click To Say Hello
+</button>
+        
+<br><br>
+<p>Name = {{name}}</p>
+        
+<button class="btn btn-success" (click)="changeName('World')" >
+    Change Name to World
+</button>
+        
+<br><br>
+<button class="btn btn-info" (click)="logEvent($event)">
+    Click Event
+</button>
+        
+<br><br>
+<button class="btn btn-danger" (click)="name='New Name'">
+    Click With No Function To Change Name
+</button>
+
+
+<hr/>
+<h3>Template Reference Variables</h3>
+<p class="text-secondary">TR variables are used to pull data from inputs to the class.</p>
+
+<p>Color = {{color}}</p>
+
+<input type="text" 
+        class="form-control"
+        name="color" 
+        id="color" 
+         #newColor>
+<br><br>
+
+<button class="btn btn-primary" (click)="changeAndLog(newColor)">
+    Change Color
+</button>
+
+
+
+
+<!-- Need to make sure FormsModule is imported -->
+<hr/>
+<h3>Two-Way Binding</h3>
+<p class="text-secondary">Two-way binding allows you to update a value and display it right away</p>
+
+<div class="mb-3">
+    <label for="animal" 
+           class="form-label">
+        Animal
+    </label>
+    <input type="text" 
+           class="form-control" 
+           name="animal" 
+           id="animal" 
+           [(ngModel)]="animal"
+           >
+</div>
+
+<br>
+<p>Animal = {{animal}}</p>
+
+
+

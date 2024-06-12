@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+.section-style {
+    padding: 20px;
+    margin: 20px auto;
+    width: 95%
+}
+
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}
+
+.important {
+    font-weight: bold;
+    text-transform: uppercase;
+}

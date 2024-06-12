@@ -1,0 +1,135 @@
+
+<hr/>
+<h3>Class Directives</h3>
+<p class="text-secondary">Class directives allow you to switch between different classes to style an element and turn them "on" or "off".</p>
+
+
+<p [ngClass]="elementClasses">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum laboriosam quis, asperiores incidunt ut eius nemo consectetur voluptate optio, magni voluptatum ducimus perspiciatis, provident ipsam quo vitae minus corrupti deleniti?
+</p>
+
+<p [ngClass]="this.hasError ? 'danger' : 'success' ">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum laboriosam quis, asperiores incidunt ut eius nemo consectetur voluptate optio, magni voluptatum ducimus perspiciatis, provident ipsam quo vitae minus corrupti deleniti?
+</p>
+
+
+
+
+<hr/>
+<h3>Style Directives</h3>
+<p class="text-secondary">Style directives allow you to switch between different styles for an element.</p>
+
+<p [ngStyle]="fontStyles">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis officiis dolorum! Delectus aliquam molestiae alias facilis dolore! Eveniet hic vel blanditiis earum sunt recusandae sint expedita obcaecati iusto amet.
+</p>
+
+<p [ngStyle]="changingStyles">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde corporis officiis dolorum! Delectus aliquam molestiae alias facilis dolore! Eveniet hic vel blanditiis earum sunt recusandae sint expedita obcaecati iusto amet.
+</p>
+
+
+
+
+<hr/>
+<h3>ngIf</h3>
+<p class="text-secondary">Allows you to use booleans to determine if an element is placed on the DOM.</p>
+
+<!-- if set to false, element will not be placed on DOM -->
+<p *ngIf="true">
+    Hello World
+</p>
+
+<br/>
+
+<!-- set up ng-template to act as else block attached to ngIf -->
+<h4 *ngIf="displayHello; else elseBlock">Hello</h4>
+
+<ng-template #elseBlock >
+    <h4>World</h4>
+</ng-template>
+
+<button class="btn btn-primary" 
+        (click)="displayHello=!displayHello">
+    Switch Visability
+</button>
+
+<br/><br/><br/>
+
+<!-- use an empty div to set up if-else with two ng-templates -->
+<div *ngIf="displayBlock; then thenBlockX; else elseBlockX"></div>
+
+<ng-template #thenBlockX>
+    <h4>Then Block</h4>
+</ng-template>
+
+<ng-template #elseBlockX>
+    <h4>Else Block</h4>
+</ng-template>
+
+<button class="btn btn-primary" (click)="displayBlock=!displayBlock">Switch Block</button>
+
+
+
+<hr/>
+<h3>ngSwitch</h3>
+<p class="text-secondary">Allows you to switch between different elements based on a value.</p>
+
+<div [ngSwitch]="animal">
+    <div *ngSwitchCase="'tiger'">
+        The animal is a tiger
+    </div>
+    <div *ngSwitchCase="'elephant'">
+        The animal is an elephant
+    </div>
+    <div *ngSwitchCase="'whale'">
+        The animal is a whale
+    </div>
+    <div *ngSwitchDefault>
+        The animal is a/an {{animal}}
+    </div>
+</div>
+
+
+<button class="btn btn-warning btn-spacing" (click)="setAnimal('tiger')">Tiger</button>
+
+<button class="btn btn-secondary btn-spacing" (click)="setAnimal('elephant')">Elephant</button>
+
+<button class="btn btn-primary btn-spacing" (click)="setAnimal('whale')">Whale</button>
+
+<button class="btn btn-success btn-spacing" (click)="setAnimal('snake')">Snake</button>
+
+<button class="btn btn-dark btn-spacing" (click)="setAnimal('panda')">Panda</button>
+
+
+
+<hr/>
+<h3>ngFor</h3>
+<p class="text-secondary">Allows you to loop through an array and display each element.</p>
+
+
+<span>Furniture:</span>
+
+<!--
+    furniture = current element in the array (can be named anything)
+    index = index of current element in array
+    first = true if current element is first in array
+    last = true if current element is last in the array
+    odd = true if current element is at an odd index
+    even = true if current element is at an even index
+-->
+<ul *ngFor="let furniture of furnitureList; 
+            index as i; 
+            first as f; last as l; 
+            odd as o; even as e">
+
+    <li>index = {{i}}, 
+        first = {{f}}, last = {{l}}, 
+        odd = {{o}}, even = {{e}}, 
+        <b>{{furniture}}</b>
+    </li>
+</ul>
+
+
+
+
+

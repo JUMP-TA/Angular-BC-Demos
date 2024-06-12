@@ -1,0 +1,114 @@
+
+<hr/>
+
+<h3>Casing</h3>
+<p class="text-secondary">Transform the casing of text.</p>
+
+<p>Original: <span class="original-txt">{{ title }}</span></p>
+
+<p>Lowercase: {{ title | lowercase }}</p>
+
+<p>Uppercase: {{ title | uppercase }}</p>
+
+<p>Titlecase: {{ title | titlecase }}</p>
+
+
+
+<hr/>
+<h3>Slice</h3>
+<p class="text-secondary">Slices / cuts a string.</p>
+
+<p>Original: <span class="original-txt">{{ title }}</span></p>
+
+<!-- will take all letters starting at index 3 -->
+<!-- indexes start at 0 -->
+<p>Starting at index 3: {{ title | slice:3 }}</p>
+
+<!-- grabs starting at index 3, up to (but not including) index 7 -->
+<p>Starting at index 3, up to index 7: {{ title | slice:3:7 }}</p>
+
+
+
+<hr/>
+<h3>JSON</h3>
+<p class="text-secondary">Allows you to print a string representation of JSON data.</p>
+
+<!-- Doesn't print anything readable -->
+<p>Original: <span class="original-txt">{{ movie }}</span></p>
+
+<!-- prints as json representation  -->
+<p>JSON: {{ movie | json }}</p>
+
+
+
+<hr/>
+<h3>Numbers</h3>
+<p class="text-secondary">Allows you to manipulate how a number is displayed.</p>
+
+<p>Original: <span class="original-txt">{{ num }}</span></p>
+
+<p>'1.2-3' = {{ num | number:'1.2-3' }}</p>
+
+<p>'3.4-5' = {{ num | number:'3.4-5' }}</p>
+
+<p>'3.1-2' = {{ num | number:'3.1-2' }}</p>
+
+
+<br/>
+<p>Original: <span class="original-txt">{{ percNum }}</span></p>
+
+<p>Percent: {{ percNum | percent }}</p>
+
+<p>Percent: {{ percNum | percent:'1.2' }}</p>
+
+
+
+<hr/>
+<h3>Currency</h3>
+<p class="text-secondary">Allows to format a number so it displays as a currency.</p>
+
+<p>Original: <span class="original-txt">{{ currVal }}</span></p>
+
+<p>Currency: {{ currVal | currency }}</p>
+
+<p>Currency in British Pounds (GBP): {{ currVal | currency: 'GBP' }}</p>
+
+<!-- displays code associated with the currency displayed -->
+<p>Currency in British Pounds With Code: {{ currVal | currency: 'GBP': 'code' }}</p>
+
+
+
+<hr/>
+<h3>Dates</h3>
+<p class="text-secondary">Can format a date.</p>
+
+<p>Original: <span class="original-txt">{{ date }}</span></p>
+
+<p>Date: {{ date | date }}</p>
+
+<p>Short: {{ date | date: 'short' }}</p>
+
+<p>Short Date: {{ date | date: 'shortDate' }}</p>
+
+<p>Short Time: {{ date | date: 'shortTime' }}</p>
+
+<!-- can format the date however you want, remember M = month, m = minute -->
+<p>Custom: {{ date | date: 'yyyy-MM-dd hh:mm:ss' }}</p>
+
+
+
+<hr/>
+<h3>Custom Pipe: Double</h3>
+<p class="text-secondary">Doubles the string given to it.</p>
+
+<p>{{ 'hello' | double }}</p>
+
+<p>{{ 5 | double }}</p>
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+<!-- formGroup = give the form group object that will track the values of your form inputs -->
+<form [formGroup]="newPersonForm"
+      (submit)="onSubmit()"
+      *ngIf="!submitted"
+      >
+
+    <h3 style="margin-bottom: 20px;">Person Form</h3>
+
+    <div class="mb-3">
+        <label for="name-input" class="form-label">Name</label>
+
+        <!-- formControlName = given to an input to figure out which form group value its connected to, must match how its written in form group -->
+        <input type="text"
+               class="form-control"
+               id="name-input"
+               formControlName="name" 
+               />
+        
+        <div *ngIf="validField('name')" style="color: red;">
+            Name cannot be left blank
+        </div>
+        
+    </div>
+
+    <div class="mb-3">
+        <label for="img-input" class="form-label">Image</label>
+
+        <input type="text"
+               class="form-control"
+               id="img-input"
+               formControlName="img" 
+               />
+        
+        <div *ngIf="validField('img')" style="color: red;">
+            Provide a proper URL that starts with 'https'
+        </div>        
+    </div>
+
+    <div class="mb-3">
+        <label for="country-input" class="form-label">Country</label>
+
+        <input type="text"
+               class="form-control"
+               id="country-input"
+               formControlName="country" 
+               />
+
+        <div *ngIf="validField('country')" style="color: red;">
+            <span *ngIf="newPersonForm.hasError('required', 'country')">
+                Must provide a country
+            </span>
+            
+            <span *ngIf="!newPersonForm.get('country')?.hasError('maxLength') && (newPersonForm.get('country')?.value.length > 0)">
+                Can't be more than 10 characters long
+            </span>
+        </div> 
+    </div>
+
+    <input type="submit" 
+           class="btn btn-primary"
+           [disabled]="newPersonForm.invalid" 
+           />
+
+       
+</form>
+
+<div class="card" 
+     style="width: 18rem; margin-top: 50px;"
+     *ngIf="submitted"
+     >
+    <img src="{{this.newPersonForm.controls['img'].value}}" 
+         class="card-img-top" 
+         alt="{{this.newPersonForm.controls['name'].value}}"
+         >
+    <div class="card-body">
+      <h5 class="card-title">{{this.newPersonForm.controls['name'].value}}</h5>
+      <p class="card-text">Country: {{this.newPersonForm.controls['country'].value}}</p>
+    </div>
+</div>
+
+
+
